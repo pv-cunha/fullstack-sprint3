@@ -1,7 +1,7 @@
 /* Código simplório, apenas para fornecer o serviço para a aplicação */
 
-var products = require("../api/products");
+const products = require('../api/products');
 
 module.exports = function (app) {
-  app.route("/api/products").get(products.all);
+  app.route('/api/products').get(products.all);
 };
