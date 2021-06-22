@@ -12,11 +12,11 @@ class ProductsView extends View {
         ? model.products
             .map(
               (product) => `    
-  <li class="products__list__item" aria-labelledby=${product.value}>
+  <li class="products__list__item" aria-labelledby=${product.image}>
    <div class="products__list__item__card">
       <figure>
         <img src=${product.image} alt=${product.description} />
-        <figcaption class="products__list__item__card__description" id=${product.value}>
+        <figcaption class="products__list__item__card__description" id=${product.image}>
           ${product.description}
         </figcaption>
         <span>
