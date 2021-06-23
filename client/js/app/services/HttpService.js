@@ -1,11 +1,17 @@
 class HttpService {
-  get(url) {
-    const options = {
-      method: 'GET',
-    };
+  async fetch(url) {
+    try {
+      const response = await fetch(url);
 
-    return fetch(url, options)
-      .then((response) => response.json())
-      .catch((error) => console.log(error));
+      if (!response.ok) {
+        throw new Error('Erro ao carregar !');
+      }
+
+      const data = await response.json();
+
+      return data;
+    } catch (err) {
+      console.log(err.message);
+    }
   }
 }

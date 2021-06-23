@@ -17,18 +17,16 @@ class ProductsController {
     this.allProducts();
   }
 
-  allProducts() {
+  async allProducts() {
     const productsService = new ProductsService();
-    productsService
-      .getProducts()
-      .then((products) => {
-        products.forEach((product) => {
-          this._productsList.add(
-            this._addProduct(product.image, product.description, product.value),
-          );
-        });
-      })
-      .catch((error) => (this._alert.message = error));
+
+    const products = await productsService.getProducts();
+
+    products.forEach((product) =>
+      this._productsList.add(
+        this._addProduct(product.image, product.description, product.value),
+      ),
+    );
   }
 
   _addProduct(image, description, value) {
